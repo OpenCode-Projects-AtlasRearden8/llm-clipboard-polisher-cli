@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-clipboard-polisher"
+version = "1.0.0"
+description = "Privacy-first CLI that polishes clipboard text with a local OpenAI-compatible model (Ollama included): tighten, simplify, punctuate, or translate."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "Asdale Dynamics, LLC" }]
+keywords = ["clipboard", "ollama", "local-llm", "privacy", "rewrite", "proofreading"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Text Processing :: Filters",
+    "Topic :: Utilities",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://dylanasdale.github.io"
+
+[project.scripts]
+clipolish = "llm_clip_polisher.cli:cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff.lint]
+ignore = ["TRY004"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["RUF059"]
